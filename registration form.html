@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Registration Form - All Input Types</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 75%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            padding: 50px;
+            max-width: 900px;
+            width: 100%;
+            border: 3px solid rgba(255, 255, 255, 0.5);
+        }
+
+        fieldset {
+            border: 3px solid #e0e0e0;
+            border-radius: 20px;
+            padding: 35px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(248,248,255,0.9) 100%);
+            transition: all 0.4s ease;
+            margin-bottom: 30px;
+        }
+
+        fieldset:hover {
+            border-color: #667eea;
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+            transform: translateY(-3px);
+        }
+
+        legend {
+            background: linear-gradient(135deg, #f6e293 0%, #98e0f1 100%);
+            color: rgb(21, 45, 49);
+            font-weight: 700;
+            font-size: 1.3em;
+            padding: 12px 30px;
+            border-radius: 30px;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            text-align: center;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .form-table {
+            width: 100%;
+            border-spacing: 0 15px;
+        }
+
+        .form-table td {
+            padding: 10px;
+        }
+
+        .form-table td:first-child {
+            padding-right: 15px;
+            vertical-align: top;
+            width: 200px;
+        }
+
+        label {
+            display: block;
+            color: #0b0334d9;
+            font-weight: 600;
+            font-size: 0.95em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        .required {
+            color: #ff006e;
+        }
+
+        .input-description {
+            font-size: 0.85em;
+            color: #666;
+            font-style: italic;
+            margin-top: 3px;
+            text-transform: none;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        input[type="date"],
+        input[type="time"],
+        input[type="datetime-local"],
+        input[type="month"],
+        input[type="week"],
+        input[type="url"],
+        input[type="search"],
+        input[type="color"],
+        input[type="range"],
+        input[type="file"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 18px;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            font-size: 1em;
+            font-family: inherit;
+            background: white;
+            color: #2c1a54;
+            transition: all 0.4s ease;
+        }
+
+        input[type="color"] {
+            height: 50px;
+            cursor: pointer;
+        }
+
+        input[type="range"] {
+            padding: 5px;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+            transform: translateY(-2px);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .radio-label,
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: 12px;
+            background: rgba(102, 126, 234, 0.05);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .radio-label:hover,
+        .checkbox-label:hover {
+            background: rgba(102, 126, 234, 0.15);
+            transform: translateX(5px);
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: #667eea;
+        }
+
+        .range-output {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            padding-top: 20px;
+        }
+
+        button,
+        input[type="submit"],
+        input[type="reset"],
+        input[type="button"] {
+            flex: 1;
+            padding: 16px 35px;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.05em;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.4s ease;
+        }
+
+        input[type="submit"] {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        input[type="submit"]:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+        }
+
+        input[type="reset"] {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            color: #666;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="reset"]:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, #e0e0e0 0%, #d0d0d0 100%);
+        }
+
+        input[type="button"] {
+            background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+            color: white;
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+        }
+
+        input[type="button"]:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(76, 175, 80, 0.5);
+        }
+
+        .success-message {
+            background: #4caf50;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .input-type-badge {
+            display: inline-block;
+            background: #764ba2;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 5px;
+            font-size: 0.75em;
+            margin-left: 5px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 30px 20px;
+            }
+
+            fieldset {
+                padding: 20px;
+            }
+
+            .form-table td:first-child {
+                width: 100%;
+            }
+
+            .form-table td {
+                display: block;
+                width: 100%;
+                padding: 5px 0;
+            }
+
+            .button-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <form class="form-container" action="#" method="POST" onsubmit="return handleSubmit(event)">
+        
+        <!-- Basic Text Inputs -->
+        <fieldset>
+            <legend>📝 Text Input Types</legend>
+            
+            <table class="form-table">
+                
+                <!-- 1. Text -->
+                <tr>
+                    <td>
+                        <label for="username">
+                            Username <span class="input-type-badge">text</span>
+                            <span class="required">*</span>
+                            <div class="input-description">Single-line text input</div>
+                        </label>
+                    </td>
+                    <td>
+                        <input type="text" id="username" name="username" placeholder="Enter username" required autofocus>
+                    </td>
+                </tr>
+                
+                <!-- 2. Password -->
+                <tr>
+                    <td>
+                        <label for="password">
+                            Password <span class="input-type-badge">password</span>
+                            <span class="required">*</span>
+                            <div class="input-description">Hidden text input</div>
+                        </label>
+                    </td>
+                    <td>
+                        <input type="password" id="password" name="password" placeholder="Enter password" minlength="6" maxlength="20" required>
+                    </td>
+                </tr>
+                
+                <!-- 3. Email -->
+                <tr>
+                    <td>
+                        <label for="email">
+                            Email <span class="input-type-badge">email</span>
+                            <span class="required">*</span>
+                            <div class="input-description">Email validation</div>
+                        </label>
+                    </td>
+                    <td>
+                        <input type="email" id="email" name="email" placeholder="example@email.com" required>
+                    </td>
+                </tr>
+                
+                <!-- 4. Tel -->
+                <tr>
+                    <td>
+                        <label for="phone">
+                            Phone <span class="input-type-badge">tel</span>
+                            <span class="required">*</span>
+                            <div class="input-description">Telephone number</div>
+                        </label>
+                    </td>
+                    <td>
+                        <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" pattern="[+]?[0-9\s-]+" required>
+                    </td>
+                </tr>
+                
+                <!-- 5. URL -->
+                <tr>
+                    <td>
+                        <label for="website">
+                            Website <span class="input-type-badge">url</span>
+                            <div class="input-description">URL validation</div>
+                        </label>
+                    </td>
+                    <td>
+                        <input type="url" id="website" name="website" placeholder="https://example.com">
+                    </td>
+                </tr>
+                
+                <!-- 6. Search -->
+                <tr>
+                    <td>
+                        <label for="search">
+                            Search <span class="input-type-badge">search</span>
+                            <div class="input-description">Search box with clear button</div>
+                        </label>
+                    </td>
+                    <td>
+                        <input type="search" id="search" name="search" placeholder="Search...">
+                    </td>
+                </tr>
+                
+            </table>
+        </fieldset>
+
+        <!-- Number Inputs -->
+        <fieldset>
+            <legend>🔢 Number Input Types</legend>
+            
+            <table class="form-table">
+                
+                <!-- 7. Number -->
+                <tr>
+                    <td>
+                        <label for="age">
+                            Age <span class="input-type-badge">number</span>
+                            <span class="required">*</span>
+                            <div class="input-description">Numeric input with spinners</div>
+                        </label>
+                    </td>
+                    <td>
+                        <input type="number" id="age" name="age" placeholder="18" value="18" min="1" max="100" step="1" required>
+                    </td>
+                </tr>
+                
+                <!-- 8. Range -->
+                <tr>
+                    <td>
+                        <label for="experience">
+                            Experience <span class="input-type-badge">range</span>
+                            <div class="input-description">Slider (0-20 years)</div>
+                        </label>
+                    </td>
+                    <td>
+                        <input type="range" id="experience" name="experience" min="0" max="20" value="5" step="1" oninput="updateRangeValue(this.value)">
+                        <span class="range-output" id="rangeValue">5 years</span>
+                    </td>
+                </tr>
+                
+            </table>
+        </fieldset>
+
+        <!-- Date & Time Inputs -->
+        <fieldset>
+            <legend>📅 Date & Time Input Types</legend>
+            
+            <table class="form-table">
+                
+                <!-- 9. Date -->
+                <tr>
+                    <td>
+                        <label for="dob">
+                            Date of Birth <span class="input-type-badge">date</span>
+                            <span class="required">*</span>
+                            <div class="input-description">Date picker</div>
+                        </label>
+                    </td>
+                    <td>
+                        <input type="date" id="dob" name="dob" min="1900-01-01" max="2025-12-31" required>
+                    </td>
+                </tr>
+                
+                <!-- 10. Time -->
+                <tr>
+                    <td>
+                        <label for="meeting-time">
+                            Meeting Time <span class="input-type-badge">time</span>
+                            <div class="input-description">Time picker (24hr format)</div>
+                        </label>
+                    </td>
+                    <td>
+                        <input type="time" id="meeting-time" name="meeting_time">
+                    </td>
+                </tr>
+                
+                <!-- 11. Datetime-local -->
+                <tr>
+                    <td>
+                        <label for="appointment">
+                            Appointment <span class="input-type-badge">datetime-local</span>
+                            <div class="input-description">Date & time picker</div>
+                        </label>
+                    </td>
+                    <td>
+                        <input type="datetime-local" id="appointment" name="appointment">
+                    </td>
+                </tr>
+                
+                <!-- 12. Month -->
+                <tr>
+                    <td>
+                        <label for="graduation">
+                            Graduation <span class="input-type-badge">month</span>
+                            <div class="input-description">Month & year picker</div>
+                        </label>
+                    </td>
+                    <td>
+                        <input type="month" id="graduation" name="graduation">
+                    </td>
+                </tr>
+                
+                <!-- 13. Week -->
+                <tr>
+                    <td>
+                        <label for="project-week">
+                            Project Week <span class="input-type-badge">week</span>
+                            <div class="input-description">Week picker</div>
+                        </label>
+                    </td>
+                    <td>
+                        <input type="week" id="project-week" name="project_week">
+                    </td>
+                </tr>
+                
+            </table>
+        </fieldset>
+
+        <!-- Choice Inputs -->
+        <fieldset>
+            <legend>☑️ Choice Input Types</legend>
+            
+            <table class="form-table">
+                
+                <!-- 14. Radio -->
+                <tr>
+                    <td>
+                        <label>
+                            Gender <span class="input-type-badge">radio</span>
+                            <span class="required">*</span>
+                            <div class="input-description">Single choice</div>
+                        </label>
+                    </td>
+                    <td>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="gender" value="Male" required checked>
+                                <span>Male</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="gender" value="Female" required>
+                                <span>Female</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="gender" value="Other" required>
+                                <span>Other</span>
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+                
+                <!-- 15. Checkbox -->
+                <tr>
+                    <td>
+                        <label>
+                            Interests <span class="input-type-badge">checkbox</span>
+                            <div class="input-description">Multiple choices</div>
+                        </label>
+                    </td>
+                    <td>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="interests" value="sport" checked>
+                                <span>Sport</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="interests" value="science">
+                                <span>Science</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="interests" value="music">
+                                <span>Music</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="interests" value="study">
+                                <span>Study</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="interests" value="coding">
+                                <span>Coding</span>
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+                
+                <!-- 16. Select -->
+                <tr>
+                    <td>
+                        <label for="branch">
+                            Branch <span class="input-type-badge">select</span>
+                            <span class="required">*</span>
+                            <div class="input-description">Dropdown list</div>
+                        </label>
+                    </td>
+                    <td>
+                        <select id="branch" name="branch" required>
+                            <option value="" selected disabled>Select Branch</option>
+                            <optgroup label="💻 Computer Science">
+                                <option value="cse">CSE - Computer Science Engineering</option>
+                                <option value="ce">CE - Computer Engineering</option>
+                                <option value="cs-it">CS & IT - Computer Science & IT</option>
+                                <option value="cae">CAE - Computer Aided Engineering</option>
+                            </optgroup>
+                            <optgroup label="🔧 Other Engineering">
+                                <option value="ec">EC - Electronics & Communication</option>
+                                <option value="civil">Civil Engineering</option>
+                                <option value="mech">Mechanical Engineering</option>
+                                <option value="ee">Electrical Engineering</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                
+            </table>
+        </fieldset>
+
+        <!-- Other Inputs -->
+        <fieldset>
+            <legend>🎨 Other Input Types</legend>
+            
+            <table class="form-table">
+                
+                <!-- 17. Color -->
+                <tr>
+                    <td>
+                        <label for="fav-color">
+                            Favorite Color <span class="input-type-badge">color</span>
+                            <div class="input-description">Color picker</div>
+                        </label>
+                    </td>
+                    <td>
+                        <input type="color" id="fav-color" name="fav_color" value="#667eea">
+                    </td>
+                </tr>
+                
+                <!-- 18. File -->
+                <tr>
+                    <td>
+                        <label for="resume">
+                            Upload Resume <span class="input-type-badge">file</span>
+                            <div class="input-description">File upload (PDF only)</div>
+                        </label>
+                    </td>
+                    <td>
+                        <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx">
+                    </td>
+                </tr>
+                
+                <!-- 19. Image -->
+                <tr>
+                    <td>
+                        <label for="profile-pic">
+                            Profile Picture <span class="input-type-badge">file (image)</span>
+                            <div class="input-description">Image upload only</div>
+                        </label>
+                    </td>
+                    <td>
+                        <input type="file" id="profile-pic" name="profile_pic" accept="image/*">
+                    </td>
+                </tr>
+                
+                <!-- 20. Textarea -->
+                <tr>
+                    <td>
+                        <label for="message">
+                            Message <span class="input-type-badge">textarea</span>
+                            <span class="required">*</span>
+                            <div class="input-description">Multi-line text</div>
+                        </label>
+                    </td>
+                    <td>
+                        <textarea id="message" name="message" placeholder="Enter your message here..." required></textarea>
+                    </td>
+                </tr>
+                
+                <!-- 21. Hidden -->
+                <tr>
+                    <td>
+                        <label>
+                            Hidden Field <span class="input-type-badge">hidden</span>
+                            <div class="input-description">Not visible to user</div>
+                        </label>
+                    </td>
+                    <td>
+                        <input type="hidden" name="user_id" value="12345">
+                        <span style="color: #666; font-style: italic;">Hidden field value: "12345" (check console on submit)</span>
+                    </td>
+                </tr>
+                
+            </table>
+        </fieldset>
+
+        <!-- Buttons -->
+        <fieldset>
+            <legend>🔘 Button Types</legend>
+            
+            <div class="button-container">
+                <!-- 22. Submit -->
+                <input type="submit" value="Submit Form">
+                
+                <!-- 23. Reset -->
+                <input type="reset" value="Reset Form">
+                
+                <!-- 24. Button -->
+                <input type="button" value="Custom Action" onclick="showAlert()">
+            </div>
+            
+            <div class="success-message" id="success-message">
+                ✅ Form submitted successfully! Check console for data.
+            </div>
+        </fieldset>
+        
+    </form>
+
+    <script>
+        // ========================================
+        // ENTER KEY NAVIGATION - આગળ જવાનું Feature
+        // ========================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // બધા input elements collect કરો
+            const inputs = document.querySelectorAll('input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="hidden"]), select, textarea');
+            
+            // દરેક input પર Enter key listener લગાવો
+            inputs.forEach((input, index) => {
+                input.addEventListener('keydown', function(e) {
+                    // જો Enter key દબાવી હોય
+                    if (e.key === 'Enter') {
+                        e.preventDefault(); // Default submit ન થાય
+                        
+                        // આગળનું input શોધો
+                        let nextInput = null;
+                        for (let i = index + 1; i < inputs.length; i++) {
+                            if (!inputs[i].disabled && inputs[i].type !== 'hidden') {
+                                nextInput = inputs[i];
+                                break;
+                            }
+                        }
+                        
+                        // જો આગળનું input મળે તો focus કરો
+                        if (nextInput) {
+                            nextInput.focus();
+                            // જો text field હોય તો text select કરો
+                            if (nextInput.select) {
+                                nextInput.select();
+                            }
+                        } else {
+                            // છેલ્લી field હોય તો submit કરો
+                            document.querySelector('input[type="submit"]').click();
+                        }
+                    }
+                });
+            });
+            
+            // Radio અને Checkbox માટે special handling
+            const radioGroups = document.querySelectorAll('input[type="radio"], input[type="checkbox"]');
+            radioGroups.forEach(input => {
+                input.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        // આગળની normal input પર જાવ
+                        const allInputs = Array.from(inputs);
+                        const nextNormalInput = allInputs.find(inp => inp.offsetTop > this.offsetTop);
+                        if (nextNormalInput) {
+                            nextNormalInput.focus();
+                        }
+                    }
+                });
+            });
+        });
+
+        // Update range slider value display
+        function updateRangeValue(value) {
+            document.getElementById('rangeValue').textContent = value + ' years';
+        }
+
+        // Custom button action
+        function showAlert() {
+            alert('✅ આ custom button છે!\n\n📌 Button type: input[type="button"]\n🎯 Enter key navigation કામ કરે છે!');
+        }
+
+        // Form submission handler
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            // Collect all form data
+            const formData = new FormData(event.target);
+            const data = {};
+            
+            // Get all checkbox values
+            const interests = [];
+            document.querySelectorAll('input[name="interests"]:checked').forEach(cb => {
+                interests.push(cb.value);
+            });
+            
+            // Convert FormData to object
+            for (let [key, value] of formData.entries()) {
+                if (key === 'interests') {
+                    data[key] = interests;
+                } else {
+                    data[key] = value;
+                }
+            }
+            
+            // Log all form data
+            console.log('=== ✅ FORM SUBMITTED ===');
+            console.log('All Form Data:', data);
+            console.log('========================');
+            
+            // Show success message
+            const successMsg = document.getElementById('success-message');
+            successMsg.style.display = 'block';
+            successMsg.innerHTML = '✅ Form સફળતાપૂર્વક submit થયું! Console માં data જુઓ.';
+            
+            // Hide after 4 seconds
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+            }, 4000);
+            
+            return false;
+        }
+
+        // Password strength indicator
+        document.getElementById('password').addEventListener('input', function() {
+            if (this.value.length >= 6 && this.value.length <= 20) {
+                this.style.borderColor = '#4caf50';
+            } else {
+                this.style.borderColor = '#ff006e';
+            }
+        });
+
+        // Email validation visual feedback
+        document.getElementById('email').addEventListener('blur', function() {
+            if (this.value && this.validity.valid) {
+                this.style.borderColor = '#4caf50';
+            } else if (this.value) {
+                this.style.borderColor = '#ff006e';
+            }
+        });
+    </script>
+
+</body>
+</html>
